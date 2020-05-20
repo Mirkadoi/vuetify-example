@@ -1,5 +1,7 @@
 # shop-showcase-vuetify
 
+Тренеровочное задание на изучение vuetify.
+
 ## Project setup
 ```
 npm install
