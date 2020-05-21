@@ -15,14 +15,25 @@
                 <h2>Число покупок: {{products.length}}</h2>
             </v-col>
             <v-col class="py-1" v-for="(n, index) in products" :key="index" cols="12">
-                <products-item :product="n" @remove="remove(index)"/>
+                <v-hover
+                        v-slot:default="{ hover }"
+                >
+                    <v-card class="pa-2" outlined>
+                        <v-card-title class="pa-0 justify-space-between title">
+                            <span>{{n}}</span>
+                            <v-fade-transition>
+                                <v-icon v-if="hover" @click="remove">remove_circle</v-icon>
+                            </v-fade-transition>
+                        </v-card-title>
+                    </v-card>
+                </v-hover>
             </v-col>
         </v-row>
     </v-container>
 </template>
 
 <script>
-    import ProductsItem from "./ProductsItem";
+    // import ProductsItem from "./ProductsItem";
 
     export default {
         data: () => ({
@@ -30,7 +41,7 @@
             productName: null,
         }),
         components: {
-            ProductsItem
+            // ProductsItem
         },
         computed: {},
         methods: {
