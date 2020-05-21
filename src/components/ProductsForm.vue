@@ -1,16 +1,19 @@
 <template>
     <v-container>
-        <v-text-field
-                v-model="productName"
-                label="Введите название продукта"
-                outlined
-                @keydown.enter="create"
-        >
-            <v-fade-transition slot="append">
-                <v-icon v-if="productName" @click="create">add_circle</v-icon>
-            </v-fade-transition>
-        </v-text-field>
         <v-row>
+            <v-col cols="12">
+                <v-text-field
+                        v-model="productName"
+                        label="Введите название продукта"
+                        outlined
+                        @keydown.enter="create"
+                >
+                    <v-fade-transition slot="append">
+                        <v-icon v-if="productName" @click="create">add_circle</v-icon>
+                    </v-fade-transition>
+                </v-text-field>
+            </v-col>
+ 
             <v-col cols="12">
                 <h2>Число покупок: {{products.length}}</h2>
             </v-col>
