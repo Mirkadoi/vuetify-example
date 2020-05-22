@@ -2,17 +2,21 @@
     <v-app>
         <v-app-bar
                 app
-                color="secondary"
-                dark
                 hide-on-scroll
         >
-            <span class="headline"><strong>ShopList</strong></span>
+            <v-toolbar-title class="headline"><strong>ShopList</strong></v-toolbar-title>
+
             <v-spacer></v-spacer>
-            <div id="nav">
-                <router-link to="/">Home</router-link>
-                |
-                <router-link to="/about">About</router-link>
-            </div>
+        //Ниже кнопки навигации на окторые я пытаюсь повесить классы
+            <v-btn-toggle>
+                <v-btn class="navsss" to="/" active-class="test">
+                    Products
+                </v-btn>
+
+                <v-btn to="/basket">
+                    Basket
+                </v-btn>
+            </v-btn-toggle>
         </v-app-bar>
 
         <v-content>
@@ -36,16 +40,36 @@
 </template>
 
 <style lang="scss">
-    #nav {
-        padding: 30px;
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .1s;
+    }
 
+    .nav {
         a {
             font-weight: bold;
-            color: #2c3e50;
+            text-decoration: none;
+            /*color: white;*/
+
+            /*&.router-link {*/
+                /*color: #42b983;*/
+            /*}*/
 
             &.router-link-exact-active {
                 color: #42b983;
             }
         }
     }
+
+    .test {
+        color: red;
+    }
+
+    .router-link-exact-active {
+        color: #42b983;
+    }
+
+    .navsss {
+        color: red;
+    }
+
 </style>

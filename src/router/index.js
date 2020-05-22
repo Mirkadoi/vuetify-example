@@ -11,8 +11,8 @@ Vue.use(VueRouter);
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
+    path: '/basket',
+    name: 'Basket',
     component: () => import('../views/Basket.vue')
   }
 ];

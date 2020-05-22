@@ -13,7 +13,7 @@
                     </v-fade-transition>
                 </v-text-field>
             </v-col>
- 
+
             <v-col cols="12">
                 <h2>Число покупок: {{products.length}}</h2>
             </v-col>
