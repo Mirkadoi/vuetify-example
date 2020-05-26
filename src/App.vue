@@ -7,9 +7,8 @@
             <v-toolbar-title class="headline"><strong>ShopList</strong></v-toolbar-title>
 
             <v-spacer></v-spacer>
-        //Ниже кнопки навигации на окторые я пытаюсь повесить классы
             <v-btn-toggle>
-                <v-btn class="navsss" to="/" active-class="test">
+                <v-btn to="/">
                     Products
                 </v-btn>
 
@@ -41,35 +40,7 @@
 
 <style lang="scss">
     .fade-enter-active, .fade-leave-active {
-        transition: opacity .1s;
-    }
-
-    .nav {
-        a {
-            font-weight: bold;
-            text-decoration: none;
-            /*color: white;*/
-
-            /*&.router-link {*/
-                /*color: #42b983;*/
-            /*}*/
-
-            &.router-link-exact-active {
-                color: #42b983;
-            }
-        }
-    }
-
-    .test {
-        color: red;
-    }
-
-    .router-link-exact-active {
-        color: #42b983;
-    }
-
-    .navsss {
-        color: red;
+        transition: opacity 1ms;
     }
 
 </style>

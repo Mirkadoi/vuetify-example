@@ -6,16 +6,16 @@
                         v-model="productName"
                         label="Введите название продукта"
                         outlined
-                        @keydown.enter="create"
+                        @keydown.enter="addProduct"
                 >
                     <v-fade-transition slot="append">
-                        <v-icon v-if="productName" @click="create">add_circle</v-icon>
+                        <v-icon v-if="productName" @click="addProduct">add_circle</v-icon>
                     </v-fade-transition>
                 </v-text-field>
             </v-col>
 
             <v-col cols="12">
-                <h2>Число покупок: {{products.length}}</h2>
+                <h2>Число покупок: {{productsCount}}</h2>
             </v-col>
             <v-col class="py-1" v-for="(n, index) in products" :key="index" cols="12">
                 <v-hover
@@ -25,7 +25,7 @@
                         <v-card-title class="pa-0 justify-space-between title">
                             <span>{{n}}</span>
                             <v-fade-transition>
-                                <v-icon v-if="hover" @click="remove">remove_circle</v-icon>
+                                <v-icon v-if="hover" @click="removeProduct(index)">remove_circle</v-icon>
                             </v-fade-transition>
                         </v-card-title>
                     </v-card>
@@ -36,26 +36,35 @@
 </template>
 
 <script>
-    // import ProductsItem from "./ProductsItem";
+    import { createNamespacedHelpers } from 'vuex';
+
+    const { mapState, mapActions } = createNamespacedHelpers('basket');
 
     export default {
         data: () => ({
-            products: ["Хлеб", "Cоль"],
             productName: null,
         }),
-        components: {
-            // ProductsItem
+        computed: {
+            ...mapState([
+                'products'
+            ]),
+            productsCount() {
+                return this.products.length || 0;
+            }
         },
-        computed: {},
         methods: {
-            create() {
-                this.products = [...this.products, this.productName];
+            ...mapActions({
+                create: 'create',
+                remove: 'remove',
+            }),
+            addProduct() {
+                this.create(this.productName);
                 this.productName = null;
             },
-            remove(i) {
-                this.products.splice(i, 1);
+            removeProduct(i) {
+                this.remove(i);
             }
-        }
+        },
     };
 </script>
 
